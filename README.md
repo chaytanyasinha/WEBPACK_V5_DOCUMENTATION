@@ -287,7 +287,7 @@ or are automatically applied via regex from your webpack configuration.
 [riot-npm]: https://img.shields.io/npm/v/riot-tag-loader.svg
 [riot-size]: https://packagephobia.now.sh/badge?p=riot-tag-loader
 
-### Performance
+### [Performance](https://webpack.js.org/configuration/performance/)
 
 webpack uses async I/O and has multiple caching levels. This makes webpack fast
 and incredibly **fast** on incremental compilations.
