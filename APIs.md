@@ -57,3 +57,48 @@ throughout a compilation. When each hook is executed, the plugin will have full
 access to the current state of the compilation.
 
 [Learn more about plugins!](/api/plugins)
+
+
+## Errors and Warnings
+
+The `errors` and `warnings` properties each contain a list of objects. Each object contains a message, a stack trace and various other properties:
+```json
+{
+  "moduleIdentifier": "C:\\Repos\\webpack\\test\\cases\\context\\issue-5750\\index.js",
+  "moduleName": "(webpack)/test/cases/context/issue-5750/index.js",
+  "loc": "3:8-47",
+  "message": "Critical dependency: Contexts can't use RegExps with the 'g' or 'y' flags.",
+  "moduleId": 29595,
+  "moduleTrace": [
+    {
+      "originIdentifier": "C:\\Repos\\webpack\\test\\cases|sync|/^\\.\\/[^/]+\\/[^/]+\\/index\\.js$/",
+      "originName": "(webpack)/test/cases sync ^\\.\\/[^/]+\\/[^/]+\\/index\\.js$",
+      "moduleIdentifier": "C:\\Repos\\webpack\\test\\cases\\context\\issue-5750\\index.js",
+      "moduleName": "(webpack)/test/cases/context/issue-5750/index.js",
+      "dependencies": [
+        {
+          "loc": "./context/issue-5750/index.js"
+        }
+      ],
+      "originId": 32582,
+      "moduleId": 29595
+    },
+    {
+      "originIdentifier": "C:\\Repos\\webpack\\testCases.js",
+      "originName": "(webpack)/testCases.js",
+      "moduleIdentifier": "C:\\Repos\\webpack\\test\\cases|sync|/^\\.\\/[^/]+\\/[^/]+\\/index\\.js$/",
+      "moduleName": "(webpack)/test/cases sync ^\\.\\/[^/]+\\/[^/]+\\/index\\.js$",
+      "dependencies": [
+        {
+          "loc": "1:0-70"
+        }
+      ],
+      "originId": 8198,
+      "moduleId": 32582
+    }
+  ],
+  "details": "    at RequireContextDependency.getWarnings (C:\\Repos\\webpack\\lib\\dependencies\\ContextDependency.js:79:5)\n    at Compilation.reportDependencyErrorsAndWarnings (C:\\Repos\\webpack\\lib\\Compilation.js:1727:24)\n    at C:\\Repos\\webpack\\lib\\Compilation.js:1467:10\n    at _next2 (<anonymous>:16:1)\n    at eval (<anonymous>:42:1)\n    at C:\\Repos\\webpack\\node_modules\\neo-async\\async.js:2830:7\n    at Object.each (C:\\Repos\\webpack\\node_modules\\neo-async\\async.js:2850:39)\n    at C:\\Repos\\webpack\\lib\\FlagDependencyExportsPlugin.js:219:18\n    at C:\\Repos\\webpack\\node_modules\\neo-async\\async.js:2830:7\n    at Object.each (C:\\Repos\\webpack\\node_modules\\neo-async\\async.js:2850:39)\n    at C:\\Repos\\webpack\\lib\\FlagDependencyExportsPlugin.js:40:16\n    at Hook.eval [as callAsync] (<anonymous>:38:1)\n    at Hook.CALL_ASYNC_DELEGATE [as _callAsync] (C:\\Repos\\tapable\\lib\\Hook.js:18:14)\n    at Compilation.finish (C:\\Repos\\webpack\\lib\\Compilation.js:1462:28)\n    at C:\\Repos\\webpack\\lib\\Compiler.js:909:18\n    at processTicksAndRejections (internal/process/task_queues.js:75:11)\n",
+  "stack": "ModuleDependencyWarning: Critical dependency: Contexts can't use RegExps with the 'g' or 'y' flags.\n    at Compilation.reportDependencyErrorsAndWarnings (C:\\Repos\\webpack\\lib\\Compilation.js:1732:23)\n    at C:\\Repos\\webpack\\lib\\Compilation.js:1467:10\n    at _next2 (<anonymous>:16:1)\n    at eval (<anonymous>:42:1)\n    at C:\\Repos\\webpack\\node_modules\\neo-async\\async.js:2830:7\n    at Object.each (C:\\Repos\\webpack\\node_modules\\neo-async\\async.js:2850:39)\n    at C:\\Repos\\webpack\\lib\\FlagDependencyExportsPlugin.js:219:18\n    at C:\\Repos\\webpack\\node_modules\\neo-async\\async.js:2830:7\n    at Object.each (C:\\Repos\\webpack\\node_modules\\neo-async\\async.js:2850:39)\n    at C:\\Repos\\webpack\\lib\\FlagDependencyExportsPlugin.js:40:16\n    at Hook.eval [as callAsync] (<anonymous>:38:1)\n    at Hook.CALL_ASYNC_DELEGATE [as _callAsync] (C:\\Repos\\tapable\\lib\\Hook.js:18:14)\n    at Compilation.finish (C:\\Repos\\webpack\\lib\\Compilation.js:1462:28)\n    at C:\\Repos\\webpack\\lib\\Compiler.js:909:18\n    at processTicksAndRejections (internal/process/task_queues.js:75:11)\n"
+}
+```
+W> Note that the stack traces are removed when `errorStack: false` is passed to the `toJson` method. The `errorStack` option is set to `true` by default.
