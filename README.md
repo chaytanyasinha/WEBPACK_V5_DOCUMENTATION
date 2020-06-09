@@ -31,9 +31,9 @@ To help translate this documentation please jump to the [translation branch][tra
 
 ## Versioning
 
-Since webpack 4 we have created a subdomain-based archive for older states of documentation
-matching older webpack version. webpack 4's documentation is available at
-[https://v4.webpack.js.org/](https://v4.webpack.js.org/) and is deployed from [`gh-pages` branch of v4.webpack.js.org repository](https://github.com/webpack/v4.webpack.js.org/tree/gh-pages)
+Since webpack 5 we have created a subdomain-based archive for older states of documentation
+matching older webpack version. webpack 5's documentation is available at
+[https://v5.webpack.js.org/](https://v5.webpack.js.org/) and is deployed from [`gh-pages` branch of v5.webpack.js.org repository](https://github.com/webpack/v5.webpack.js.org/tree/gh-pages)
 
 There are various known issues that need fixing ([#3366](https://github.com/webpack/webpack.js.org/issues/3366)).
 
